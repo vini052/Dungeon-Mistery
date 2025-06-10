@@ -1,0 +1,85 @@
+[gd_scene load_steps=13 format=3 uid="uid://2biu84ot6cds"]
+
+[ext_resource type="Script" path="res://Scenes/chest_3.gd" id="1_400u5"]
+[ext_resource type="Texture2D" uid="uid://bffvnm3xhaxkc" path="res://assets/sprites/0x72_DungeonTilesetII_v1.7.png" id="1_u8v0u"]
+[ext_resource type="AudioStream" uid="uid://cng2sh6ve2on2" path="res://assets/se/chest_unlock.mp3" id="2_pje8y"]
+[ext_resource type="AudioStream" uid="uid://x3twyy4y8l2v" path="res://assets/se/Snes_pop.ogg.mp3" id="3_36228"]
+[ext_resource type="AudioStream" uid="uid://dh4b720shxkqq" path="res://assets/se/chest_locked.mp3" id="4_wgtxj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37vq2"]
+atlas = ExtResource("1_u8v0u")
+region = Rect2(356, 400, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2l37n"]
+atlas = ExtResource("1_u8v0u")
+region = Rect2(356, 400, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vsc7q"]
+atlas = ExtResource("1_u8v0u")
+region = Rect2(372, 400, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sk503"]
+atlas = ExtResource("1_u8v0u")
+region = Rect2(388, 400, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oeb1w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_37vq2")
+}],
+"loop": false,
+"name": &"closed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2l37n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vsc7q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sk503")
+}],
+"loop": false,
+"name": &"opened",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5qpoo"]
+size = Vector2(16, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2kpr6"]
+size = Vector2(1, 12)
+
+[node name="chest3" type="Node2D"]
+script = ExtResource("1_400u5")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="StaticBody2D"]
+sprite_frames = SubResource("SpriteFrames_oeb1w")
+animation = &"closed"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_5qpoo")
+
+[node name="opening_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="opening_area"]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_2kpr6")
+
+[node name="open" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_pje8y")
+
+[node name="pop" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_36228")
+
+[node name="locked" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_wgtxj")
+
+[connection signal="body_entered" from="opening_area" to="." method="_on_opening_area_body_entered"]
+[connection signal="body_exited" from="opening_area" to="." method="_on_opening_area_body_exited"]

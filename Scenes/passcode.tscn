@@ -1,0 +1,87 @@
+[gd_scene load_steps=15 format=3 uid="uid://csc13yjfblgsd"]
+
+[ext_resource type="Texture2D" uid="uid://co6qwsrkkxctj" path="res://assets/sprites/TextBox.png" id="1_87tgp"]
+[ext_resource type="Script" path="res://Scenes/passcode.gd" id="1_vvdes"]
+[ext_resource type="FontFile" uid="uid://c6plncwpd8gxm" path="res://assets/fonts/PressStart2P-Regular.ttf" id="2_2vr5l"]
+[ext_resource type="Texture2D" uid="uid://dfb84ydvt6wes" path="res://assets/sprites/Submit.png" id="3_jqlex"]
+[ext_resource type="Texture2D" uid="uid://cf0jf5p8gl3jy" path="res://assets/sprites/Submit_Pressed.png" id="4_i17hf"]
+[ext_resource type="Texture2D" uid="uid://dw6mx1majg4td" path="res://assets/sprites/Submit_Hover.png" id="5_ofo23"]
+[ext_resource type="Texture2D" uid="uid://dtkvukef2edty" path="res://assets/sprites/judgment.png" id="7_2inqv"]
+[ext_resource type="Texture2D" uid="uid://dna3ovayi6rwq" path="res://assets/sprites/judgment_pressed.png" id="8_smg0w"]
+[ext_resource type="Texture2D" uid="uid://qfmu6cuebhru" path="res://assets/sprites/judgment_hover.png" id="9_gljbp"]
+[ext_resource type="AudioStream" uid="uid://04bonrc727ux" path="res://assets/se/wrong-47985.mp3" id="10_uvul1"]
+[ext_resource type="AudioStream" uid="uid://b3ohpy1iktsp6" path="res://assets/se/correct.mp3" id="11_3jber"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7jqu1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_peqgb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_swugh"]
+
+[node name="passcode" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -449.0
+offset_bottom = -718.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vvdes")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(177, 46)
+texture = ExtResource("1_87tgp")
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 19.0
+offset_right = 324.0
+offset_bottom = 77.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_colors/font_uneditable_color = Color(0, 0, 0, 1)
+theme_override_colors/font_placeholder_color = Color(0, 0, 0, 0.65098)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/caret_color = Color(0, 0, 0, 1)
+theme_override_colors/selection_color = Color(0, 0.470588, 1, 0.337255)
+theme_override_colors/clear_button_color = Color(0, 0, 0, 1)
+theme_override_colors/clear_button_color_pressed = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_2vr5l")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7jqu1")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_peqgb")
+theme_override_styles/read_only = SubResource("StyleBoxEmpty_swugh")
+placeholder_text = "Digite a senha:"
+
+[node name="Submit" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 88.0
+offset_right = 200.0
+offset_bottom = 112.0
+scale = Vector2(1.5, 1.5)
+texture_normal = ExtResource("3_jqlex")
+texture_pressed = ExtResource("4_i17hf")
+texture_hover = ExtResource("5_ofo23")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 312.0
+offset_top = 16.0
+offset_right = 352.0
+offset_bottom = 56.0
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("7_2inqv")
+texture_pressed = ExtResource("8_smg0w")
+texture_hover = ExtResource("9_gljbp")
+
+[node name="Wrong" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_uvul1")
+
+[node name="Correct" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_3jber")
+
+[connection signal="pressed" from="Submit" to="." method="_on_submit_pressed"]
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

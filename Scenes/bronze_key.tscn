@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://bln7yxy63xi0b"]
+
+[ext_resource type="Script" path="res://Scenes/bronze_key.gd" id="1_n38mq"]
+[ext_resource type="Resource" uid="uid://bdxttqkbl22j0" path="res://Inventory/items/bronze_key.tres" id="2_b7anp"]
+[ext_resource type="Texture2D" uid="uid://2xv54tjbsuog" path="res://Inventory/inventory_sprites/bronze_key.png" id="3_5tl6w"]
+[ext_resource type="AudioStream" uid="uid://chyjvswvdmmp0" path="res://assets/se/item_get.mp3" id="4_dt4s8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5bvx5"]
+size = Vector2(14, 16)
+
+[node name="bronze_key" type="Node2D"]
+script = ExtResource("1_n38mq")
+item = ExtResource("2_b7anp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_5tl6w")
+
+[node name="pickable_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pickable_area"]
+position = Vector2(0, 0.20799)
+shape = SubResource("RectangleShape2D_5bvx5")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_dt4s8")
+
+[connection signal="body_entered" from="pickable_area" to="." method="_on_pickable_area_body_entered"]

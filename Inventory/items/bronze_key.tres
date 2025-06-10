@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://bdxttqkbl22j0"]
+
+[ext_resource type="Script" path="res://Inventory/inventory_item.gd" id="1_5mql5"]
+[ext_resource type="Texture2D" uid="uid://2xv54tjbsuog" path="res://Inventory/inventory_sprites/bronze_key.png" id="2_64mgg"]
+
+[resource]
+script = ExtResource("1_5mql5")
+name = "Chave de Bronze"
+texture = ExtResource("2_64mgg")
+description = "Chave que abre o baú de bronze"

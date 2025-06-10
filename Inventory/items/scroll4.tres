@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://c7mlivsxmauaa"]
+
+[ext_resource type="Script" path="res://Inventory/inventory_item.gd" id="1_3i606"]
+[ext_resource type="Texture2D" uid="uid://dmnl3qf5fgjkq" path="res://Inventory/inventory_sprites/scroll.png" id="2_os6bc"]
+
+[resource]
+script = ExtResource("1_3i606")
+name = "Pergaminho Quaternário"
+texture = ExtResource("2_os6bc")
+description = "A ordem chega ao fim: (4,15) - (11,20)"

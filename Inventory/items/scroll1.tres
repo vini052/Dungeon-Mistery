@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://2fxibhx0lwjw"]
+
+[ext_resource type="Script" path="res://Inventory/inventory_item.gd" id="1_bpk4n"]
+[ext_resource type="Texture2D" uid="uid://dmnl3qf5fgjkq" path="res://Inventory/inventory_sprites/scroll.png" id="2_q4bn6"]
+
+[resource]
+script = ExtResource("1_bpk4n")
+name = "Pergaminho Primário"
+texture = ExtResource("2_q4bn6")
+description = "A ordem inicia: (1,7) - (3,5)"

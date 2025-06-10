@@ -1,0 +1,87 @@
+[gd_scene load_steps=12 format=3 uid="uid://df6vkcr0o0ngs"]
+
+[ext_resource type="Script" path="res://Scenes/gatekeeper.gd" id="1_1xb6j"]
+[ext_resource type="Texture2D" uid="uid://bffvnm3xhaxkc" path="res://assets/sprites/0x72_DungeonTilesetII_v1.7.png" id="1_kjuwf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jr06e"]
+atlas = ExtResource("1_kjuwf")
+region = Rect2(208, 168, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_52rpq"]
+atlas = ExtResource("1_kjuwf")
+region = Rect2(128, 168, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lhncq"]
+atlas = ExtResource("1_kjuwf")
+region = Rect2(144, 168, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_urx7v"]
+atlas = ExtResource("1_kjuwf")
+region = Rect2(160, 168, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oltir"]
+atlas = ExtResource("1_kjuwf")
+region = Rect2(192, 168, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b4krt"]
+atlas = ExtResource("1_kjuwf")
+region = Rect2(176, 168, 16, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fwmxi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jr06e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_52rpq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lhncq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_urx7v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oltir")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b4krt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_52rpq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mdedb"]
+size = Vector2(14, 19)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tpis1"]
+size = Vector2(16, 15.5)
+
+[node name="Gatekeeper" type="Node2D"]
+script = ExtResource("1_1xb6j")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="StaticBody2D"]
+scale = Vector2(-1, 1)
+sprite_frames = SubResource("SpriteFrames_fwmxi")
+frame_progress = 0.264709
+speed_scale = 2.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-1, 2.5)
+shape = SubResource("RectangleShape2D_mdedb")
+
+[node name="interectable_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interectable_area"]
+position = Vector2(-2, 6.25)
+shape = SubResource("RectangleShape2D_tpis1")
+
+[connection signal="body_entered" from="interectable_area" to="." method="_on_interectable_area_body_entered"]
+[connection signal="body_exited" from="interectable_area" to="." method="_on_interectable_area_body_exited"]

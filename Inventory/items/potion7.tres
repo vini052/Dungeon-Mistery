@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://hv362noiub23"]
+
+[ext_resource type="Script" path="res://Inventory/inventory_item.gd" id="1_u6pc4"]
+[ext_resource type="Texture2D" uid="uid://dxaejpf5jbql0" path="res://assets/sprites/atlas/key.tres" id="2_d80hv"]
+
+[resource]
+script = ExtResource("1_u6pc4")
+name = "poção"
+texture = ExtResource("2_d80hv")
+descrption = "poção de testes"

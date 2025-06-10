@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://cmxs6344jo38u"]
+
+[ext_resource type="Texture2D" uid="uid://ba1lt7qjnj5hh" path="res://assets/sprites/atlas/sign.tres" id="1_8w8ub"]
+[ext_resource type="Script" path="res://Scenes/sign.gd" id="1_x4g0o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0u0wc"]
+size = Vector2(14, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ny686"]
+size = Vector2(1, 8)
+
+[node name="Sign" type="StaticBody2D"]
+script = ExtResource("1_x4g0o")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_8w8ub")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2.5)
+shape = SubResource("RectangleShape2D_0u0wc")
+
+[node name="readable_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="readable_area"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_ny686")
+
+[connection signal="body_entered" from="readable_area" to="." method="_on_readable_area_body_entered"]
+[connection signal="body_exited" from="readable_area" to="." method="_on_readable_area_body_exited"]

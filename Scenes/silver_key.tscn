@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://dc4kppsd32q7j"]
+
+[ext_resource type="Script" path="res://Scenes/silver_key.gd" id="1_2hweq"]
+[ext_resource type="Texture2D" uid="uid://er2602lepilw" path="res://Inventory/inventory_sprites/silver_key.png" id="1_2m2v8"]
+[ext_resource type="AudioStream" uid="uid://chyjvswvdmmp0" path="res://assets/se/item_get.mp3" id="2_onpug"]
+[ext_resource type="Resource" uid="uid://dvmip1nbt8fpk" path="res://Inventory/items/silver_key.tres" id="2_q017i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5bvx5"]
+size = Vector2(14, 7)
+
+[node name="silver_key" type="Node2D"]
+script = ExtResource("1_2hweq")
+item = ExtResource("2_q017i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_2m2v8")
+
+[node name="pickable_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pickable_area"]
+position = Vector2(0, 0.20799)
+shape = SubResource("RectangleShape2D_5bvx5")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_onpug")
+
+[connection signal="body_entered" from="pickable_area" to="." method="_on_pickable_area_body_entered"]

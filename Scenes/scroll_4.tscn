@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://dfovlbjdcc504"]
+
+[ext_resource type="Script" path="res://Scenes/scroll_4.gd" id="1_5qag8"]
+[ext_resource type="Resource" uid="uid://c7mlivsxmauaa" path="res://Inventory/items/scroll4.tres" id="2_qf7w7"]
+[ext_resource type="Texture2D" uid="uid://dmnl3qf5fgjkq" path="res://Inventory/inventory_sprites/scroll.png" id="3_wrm8r"]
+[ext_resource type="AudioStream" uid="uid://chyjvswvdmmp0" path="res://assets/se/item_get.mp3" id="4_yt2d5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wfmyv"]
+size = Vector2(18, 18)
+
+[node name="scroll4" type="Node2D"]
+scale = Vector2(0.65, 0.65)
+script = ExtResource("1_5qag8")
+item = ExtResource("2_qf7w7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_wrm8r")
+
+[node name="pickable_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pickable_area"]
+shape = SubResource("RectangleShape2D_wfmyv")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_yt2d5")
+
+[connection signal="body_entered" from="pickable_area" to="." method="_on_pickable_area_body_entered"]

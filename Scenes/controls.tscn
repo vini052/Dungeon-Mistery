@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvr6gvlw70x7v"]
+
+[ext_resource type="Script" path="res://Scenes/controls.gd" id="1_7jigt"]
+[ext_resource type="Texture2D" uid="uid://dooa6ulrn78g2" path="res://assets/sprites/Controls_Screen.png" id="1_yliei"]
+[ext_resource type="FontFile" uid="uid://c6plncwpd8gxm" path="res://assets/fonts/PressStart2P-Regular.ttf" id="2_am78n"]
+
+[node name="Controls" type="Node2D"]
+script = ExtResource("1_7jigt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_yliei")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.78, 0.78)
+
+[node name="Label" type="Label" parent="."]
+offset_left = -508.0
+offset_top = -200.0
+offset_right = 508.0
+offset_bottom = 400.0
+theme_override_fonts/font = ExtResource("2_am78n")
+theme_override_font_sizes/font_size = 28
+text = "- Controles -
+
+WASD - Movimentação do Personagem
+
+BARRA DE ESPAÇO - Interagir
+
+Numeros (1 a 9) - Acessam os slots do Inventário
+
+- Instruções -
+
+O jogo consiste de um grande enigma fragmentado em 20 dicas espalhadas por 20 salas diferentes. Junte todas elas, descubra a senha final e escape da Dungeon
+
+- Pressione ESPAÇO para iniciar -"
+horizontal_alignment = 1
+autowrap_mode = 2
